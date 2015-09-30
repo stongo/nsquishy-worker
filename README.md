@@ -12,6 +12,15 @@ This module takes care of lots of trivial setup, and follows an established patt
 * job [function] - The meat of your worker. This is where you process the NSQ message and do whatever you want. Takes `msg`, `msgBody` and `callback` as arguments. Callback expects the signature `callback(err, data)`, with `data` being any information you want to pass to the finish function
 * finish [function] - The action to take after the job has finished running. Takes `data`, `msg`, `msgBody`, `next` as arguments. Here's where you would publish another message, write logs, etc. `next` signature is `next(err)`
 
+## Context
+
+All the functions listed on the configuration above have access to the following methods and properties in `this`
+
+* nsqReader - a pre-configured [nsqjs](https://github.com/dudleycarr/nsqjs) reader
+* nsqWriter - a pre-configured [nsqjs](https://github.com/dudleycarr/nsqjs) writer (if writer set to true in configuration)
+* nsquishyOptions - settings used in configuration
+* nsquishy - the instantiated nsquishy object
+
 ## Opinions
 
 * *Unique Channels* - Distinct workers that listen to the same topic should all have unique channels. For instance, if you have two worker types, "alert-worker" and "log-worker", interested in topic "metrics", set all pooled alert-workers to channel "alert-worker" and all log-workers to channel "log-worker."
