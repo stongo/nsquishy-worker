@@ -1,5 +1,3 @@
-var NsquishyWorker = require('nsquishy-worker');
-
 var workerOptions = {
     nsquishyOptions: {
         channel: 'example-worker'
