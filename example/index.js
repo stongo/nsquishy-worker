@@ -14,7 +14,8 @@ var workerOptions = {
     job: function (msg, msgBody, callback) {
         var Message = require('nsquishy-message');
         var message = new Message({
-            source: 'example-worker'
+            source: 'example-worker',
+            payload: 'cowabunga'
         });
         this.nsqWriter.publish('events', JSON.stringify(message));
         return callback(null, 'complete');
