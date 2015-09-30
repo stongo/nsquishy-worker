@@ -1,7 +1,7 @@
 # Nsquishy Worker
 
 An opinionated NSQ worker framework using **[nsquishy](https://github.com/stongo/nsquishy)**.
-Based on **[nsqjs](https://github.com/dudleycarr/nsqjs)** to simplify microservice workers using NSQ.
+Based on **[nsqjs](https://github.com/dudleycarr/nsqjs)** to simplify workers using NSQ.
 This module takes care of lots of trivial setup such as logging and discovery, and follows an established pattern we've been using at **[&yet](http://andyet.com)** to rapidly create and deploy NSQ workers anywhere.
 
 ## Configuration
