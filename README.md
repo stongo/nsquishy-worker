@@ -20,6 +20,7 @@ All the functions listed on the configuration above have access to the following
 * nsqWriter - a pre-configured [nsqjs](https://github.com/dudleycarr/nsqjs) writer (if writer set to true in configuration)
 * nsquishyOptions - settings used in configuration
 * nsquishy - the instantiated nsquishy object
+* Message - [nsquishy-message](https://github.com/stongo/nsquishy-message) constructor for creating new messages
 
 ## Opinions
 

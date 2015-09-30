@@ -18,9 +18,8 @@ var workerOptions = {
         return callback(null, status);
     },
     finish: function (data, msg, msgBody, next) {
-        var Message = require('nsquishy-message');
         if (data === 'complete') {
-            var message = new Message({
+            var message = new this.Message({
                 source: 'example-worker',
                 payload: data
             });
@@ -28,7 +27,7 @@ var workerOptions = {
             return next();
         }
 
-        var message = new Message({
+        var message = new this.Message({
             source: 'example-worker',
             payload: 'there was a problem'
         });
