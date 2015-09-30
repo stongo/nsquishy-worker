@@ -2,7 +2,7 @@ var NsquishyWorker = require('nsquishy-worker');
 
 var workerOptions = {
     nsquishyOptions: {
-        channel: 'talky-trace-pg-worker'
+        channel: 'example-worker'
     },
     writer: true,
     match: function (msg, msgBody) {
@@ -12,7 +12,11 @@ var workerOptions = {
         return false;
     },
     job: function (msg, msgBody, callback) {
-        this.nsqWriter.publish('events', JSON.stringify('cowabunga'));
+        var Message = require('nsquishy-message');
+        var message = new Message({
+            source: 'example-worker'
+        });
+        this.nsqWriter.publish('events', JSON.stringify(message));
         return callback(null, 'complete');
     },
     finish: function (data, msg, msgBody, next) {
@@ -23,3 +27,6 @@ var workerOptions = {
 var NsquishyWorker = require('nsquishy-worker');
 var worker = new NsquishyWorker(workerOptions);
 worker.start();
+worker.on('error', function (err) {
+    throw err;
+});
