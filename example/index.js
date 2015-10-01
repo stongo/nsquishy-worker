@@ -2,7 +2,7 @@ var NsquishyWorker = require('nsquishy-worker');
 
 var workerOptions = {
     nsquishyOptions: {
-        channel: 'talky-trace-pg-worker'
+        channel: 'example-worker'
     },
     writer: true,
     match: function (msg, msgBody) {
