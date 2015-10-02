@@ -19,7 +19,8 @@ var workerOptions = {
     },
     finish: function (data, msg, msgBody, next) {
         if (data === 'complete') {
-            var message = new this.Message({
+            var Message = this.Message;
+            var message = new Message({
                 source: 'example-worker',
                 payload: data
             });
