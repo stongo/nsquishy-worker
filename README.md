@@ -26,8 +26,9 @@ All the functions listed on the configuration above have access to the following
 
 * *Unique Channels* - Distinct workers that listen to the same topic should all have unique channels. For instance, if you have two worker types, "alert-worker" and "log-worker", interested in topic "metrics", set all pooled alert-workers to channel "alert-worker" and all log-workers to channel "log-worker."
 * *Finish all messages* - since all channels get their own stream of a given topic, if a worker isn't interested in a message, it should finish it. This won't disturb other channels and keeps the nsqd queues under control. Nsquishy Worker handles this for you, so you don't need to do anything in the `finish` function
-* *Standardized message bodies* - it is highly recommended to publish messages using **[nsquishy-message](https://github.com/stongo/nsquishy-message)** to avoid complexity as worker types scale
-* *Horizontal Scaling* - The core Nsquishy module used in this module allows worker to connect to nsqd or nsqlookupd by manually specifying their addresses, or by reading etcd keys where the host information is stored. This allows for easy clustering on hosts such as CoreOS.
+* *Standardized message bodies* - it is highly recommended to publish messages using **[nsquishy-message](https://github.com/stongo/nsquishy-message)** to avoid complexity as worker types scale. The message constructor comes bundled already with nsquishy-worker
+* *Horizontal Scaling* - The core Nsquishy module used in this module allows worker to connect to nsqd or nsqlookupd by manually specifying their addresses, or by reading etcd keys where the host information is stored. This allows for easy clustering on hosts such as CoreOS
+* *Plugable* - check soon for other modules that can be used for the `match`, `job` and `finish` functions
 
 ## Example
 
